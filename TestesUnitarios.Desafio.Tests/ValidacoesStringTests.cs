@@ -1,3 +1,4 @@
+using System.Text;
 using TestesUnitarios.Desafio.Console.Services;
 
 namespace TestesUnitarios.Desafio.Tests;
@@ -9,14 +10,17 @@ public class ValidacoesStringTests
     [Fact]
     public void DeveRetornar6QuantidadeCaracteresDaPalavraMatrix()
     {
-        //TODO: Corrigir a variável "texto" e "resultadoEsperado" da seção Arrange
-
         // Arrange
-        var texto = "a";
-        var resultadoEsperado = 0;
+        var textoBuilder = new StringBuilder();
+        var resultadoEsperado = 60;
+        for (int i = 1; i <= 60; i++)
+        {
+            textoBuilder.Append("a");
+        }
+        var texto = textoBuilder.ToString();
 
         // Act
-        var resultado = _validacoes.RetornarQuantidadeCaracteres(texto);
+        int resultado = _validacoes.RetornarQuantidadeCaracteres(texto);
 
         // Assert
         Assert.Equal(resultadoEsperado, resultado);
@@ -31,7 +35,7 @@ public class ValidacoesStringTests
 
         //TODO: Corrigir a chamada do método "ContemCaractere" da seção Act
         // Act
-         _validacoes.ContemCaractere(texto, textoProcurado);
+        _validacoes.ContemCaractere(texto, textoProcurado);
 
         // Assert
         //TODO: Corrigir o Assert.True com base no retorno da chamada ao método
@@ -46,11 +50,10 @@ public class ValidacoesStringTests
         var textoProcurado = "teste";
 
         // Act
-        var resultado = _validacoes.ContemCaractere(texto, textoProcurado);
+        bool resultado = _validacoes.ContemCaractere(texto, textoProcurado);
 
         // Assert
-        //TODO: Corrigir o Assert.False com base no retorno da chamada ao método
-        Assert.False(true);
+        Assert.False(resultado);
     }
 
     //TODO: Corrigir a anotação [Fact]
